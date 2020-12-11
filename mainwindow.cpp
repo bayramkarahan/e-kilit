@@ -55,7 +55,7 @@ MainWindow::MainWindow(QWidget *parent) :
     QRWidget *qw=new QRWidget(this);
     qw->setQRData(QString::number(qrnumber));
     qw->resize(boyut,boyut);
-    qw->move(10,screenSize.height()-boyut-boyut-10);
+    qw->move(screenSize.width()/2,screenSize.height()-boyut-boyut-10);
    // qDebug()<<qrnumber;
 /****************************************************/
 
@@ -175,43 +175,45 @@ MainWindow::MainWindow(QWidget *parent) :
 
             //timerClickSlot();
 
-        kilitMenus->exec(mapToGlobal(keybordButton->pos()));
+       kilitMenus->exec(mapToGlobal(keybordButton->pos()));
 
-        passwd->setFocus();
+       passwd->setFocus();
+      //qDebug()<<we->page()->toPlainText();
+
+/*            we->page()->runJavaScript("function myFunction() {"
+                                        "var Row = document.getElementById('vc-avatar');var Cells = Row.getElementsByTagName('td');"
+                                        "return Cells[0].innerText;} myFunction();",
+                                        [] (const QVariant &result) {
+                    qDebug()<<result.toString();
+             });
+             */
         });
 
-    /****************************************************/
-   /* QPushButton *loginButton= new QPushButton(this);
-    loginButton->setFixedSize(80, 30);
-    loginButton->setIconSize(QSize(60,30));
-    loginButton->setText("Kilit Aç");
-    loginButton->setStyleSheet("Text-align:left");
-    loginButton->setFlat(true);
-    loginButton->move(screenSize.width()/2-40,screenSize.height()/2-30);
-    // loginButton->setIcon(QIcon(":icons/saveprofile.png"));
-    */
-        connect(passwd, SIGNAL(returnPressed()),enterButton,SIGNAL(clicked()));
+           connect(passwd, SIGNAL(returnPressed()),enterButton,SIGNAL(clicked()));
 
-   /* connect(loginButton, &QPushButton::clicked, [=]() {
+                  /************************Eba QR Kod*******************************/
+                   qrkodpngtimer = new QTimer(this);
+                   connect(qrkodpngtimer, SIGNAL(timeout()), this, SLOT(qrkodPngSlot()));
+               we=new QWebEngineView(this);
+               we->page()->load(QUrl("https://giris.eba.gov.tr/EBA_GIRIS/studentQrcode.jsp"));
+               we->resize(350,700);
 
-        if(passwd->text()==QString::number(qrnumber))
-        {
-            //QMessageBox::information(this,"E-Ağ 3.0","Şifre Doğru");
-        exit(0);
-        }else
-        {
-           // QMessageBox::information(this,"E-Ağ 3.0","Şifre Yanlış");
+               connect(we, &QWebEngineView::loadFinished, this, &MainWindow::onLoadFinished);
 
-            sifre->setText("Şifre Yanlış");
-        }
-        /************************************/
+               QObject::connect(we, &QWebEngineView::urlChanged, [=] (const QUrl& url) {
+                   qDebug()<<"sayfa değişti"<<url.toString();
+               QString nurl="https://ders.eba.gov.tr/ders/proxy/VCollabPlayer";
+               QRegularExpression re(nurl);
 
-   // });
+               if(url.toString().contains(re))
+               {
+                   qDebug()<<"Eba sayfası açıldı";
+                   exit(0);
+               }
 
- //show();
-  //  this->raise();
+               });
 
-//passwd->activateWindow();
+                   /*****************************************************/
 }
 void MainWindow::zamanlama()
 {
@@ -230,6 +232,50 @@ int MainWindow::getRand(int min, int max){
 MainWindow::~MainWindow()
 {
   //  delete ui;
+}
+
+void MainWindow::qrkodPngSlot()
+{
+    qDebug()<<"foto-saved";
+    /*int left, top, width, height;
+        left =100;
+        top = 170;
+        width = 300;
+        height = 300;
+
+        QImage image(height, width, QImage::Format_RGB32);
+        QRegion rg(left, top, width, height);
+        QPainter painter(&image);
+        we->page()->view()->render(&painter, QPoint(), rg);
+        painter.end();
+        image.save("test.png", "PNG", 80);
+        qrkodpngtimer->stop();
+
+
+
+       /* QPixmap bkgnd("test.png");
+        bkgnd = bkgnd.scaled(200,200, Qt::IgnoreAspectRatio);
+        QPalette palette;
+        palette.setBrush(QPalette::Background, bkgnd);
+
+
+        QWidget *qww=new QWidget(this);
+
+        qww->resize(200,200);
+        qww->setAutoFillBackground(true);
+        //qww->setStyleSheet("{background-image: url(:/icons/lock.png);}");
+        qww->setPalette(palette);
+        qww->move(this->width()-250,50);
+        qww->show();
+      // we->hide();
+      */
+}
+void MainWindow::onLoadFinished()
+{
+    qDebug()<<"Durum"<<"yüklendi";
+    //system("sleep 2");
+   // qrkodpngtimer->start(2000);
+
 }
 
 void MainWindow::klavyeButtonClick(){

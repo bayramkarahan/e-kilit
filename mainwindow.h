@@ -6,6 +6,9 @@
 #include<QLineEdit>
 #include<QLabel>
 #include<QPushButton>
+
+#include<QWebEngineView>
+#include<QTimer>
 namespace Ui {
 class MainWindow;
 }
@@ -27,6 +30,9 @@ QStringList fileToList(QString filename);
 void listToFile(QStringList list, QString filename);
 QString listGetLine(QStringList list,QString data);
 
+void onLoadFinished();
+void qrkodPngSlot();
+
 private:
     //Ui::MainWindow *ui;
 QLineEdit *passwd;
@@ -37,6 +43,10 @@ QMenu *ayarMenu();
 int qrnumber;
 QPushButton *enterButton;
 QString localDir;
+
+
+QWebEngineView *we;
+QTimer *qrkodpngtimer;
 };
 
 #endif // MAINWINDOW_H
