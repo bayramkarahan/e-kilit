@@ -1,0 +1,6 @@
+#bayram KARAHAN bayramk@gmail.com
+
+[Desktop Entry]
+Exec=sh /usr/bin/e-kilitxdglink.sh
+Type=Application
+Name[tr_TR]=e-kilitetcxdgautostart.desktop

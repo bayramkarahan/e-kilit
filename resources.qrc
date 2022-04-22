@@ -1,0 +1,12 @@
+<RCC>
+    <qresource prefix="/">
+        <file>icons/lock.png</file>
+        <file>icons/klavye.png</file>
+        <file>icons/close.png</file>
+        <file>icons/redo.png</file>
+        <file>icons/settings.png</file>
+        <file>icons/about.png</file>
+        <file>icons/ebaqrcode.png</file>
+        <file>icons/qrcode.png</file>
+    </qresource>
+</RCC>
