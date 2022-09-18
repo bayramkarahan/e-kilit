@@ -197,7 +197,7 @@ QSize screenSize = qApp->screens()[0]->size();
                       "\nBu uygulamayı kullanmaktan doğabilecek her türlü hukuki sorumluluğu kullanıcı kabul etmiş sayılır."
                       "\n");
       auto *caption=new QLabel();
-      caption->setText( "<b>E-Kilit 4.3</b>");
+      caption->setText( "<b>e-kilit 4.8.1</b>");
       auto *email=new QLabel();
       email->setText("İstek ve önerileriniz için;"
                       "\nE-Posta: bayramk@gmail.com"

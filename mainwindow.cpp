@@ -100,7 +100,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //| Qt::WindowDoesNotAcceptFocus);
     QTimer *timerformGoster = new QTimer(this);
     connect(timerformGoster, SIGNAL(timeout()), this, SLOT(formGoster()));
-    timerformGoster->start(50);
+    timerformGoster->start(1000);
 
 /******************qr-code***********************************/
     qrnumber=getRand(100000,999999);
