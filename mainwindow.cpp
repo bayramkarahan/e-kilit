@@ -28,10 +28,16 @@
 #include<QProcess>
 void MainWindow::formGoster()
 {
-    this->activateWindow();
-    //passwd->setFocus();
-   // qDebug()<<"..e-kilit....";
-}
+    /// if(this->isActiveWindow()) return;
+
+     //     qDebug()<<"formGoster..e-kilit...."<<this->isActiveWindow();
+
+
+       this->activateWindow();
+
+        passwd->setFocus();
+
+   }
 MainWindow::MainWindow(QWidget *parent) :
     QMainWindow(parent)//    ui(new Ui::MainWindow)
 {
@@ -94,13 +100,13 @@ MainWindow::MainWindow(QWidget *parent) :
                       Qt::WindowStaysOnTopHint
                         |Qt::X11BypassWindowManagerHint);
 */
-    this->setAttribute(Qt::WA_ShowWithoutActivating, true);
+   this->setAttribute(Qt::WA_ShowWithoutActivating, true);
     this->setWindowFlags(this->windowFlags() | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint | Qt::X11BypassWindowManagerHint | Qt::Tool | Qt::WindowStaysOnTopHint);
     //| Qt::WindowTransparentForInput);
     //| Qt::WindowDoesNotAcceptFocus);
-    QTimer *timerformGoster = new QTimer(this);
-    connect(timerformGoster, SIGNAL(timeout()), this, SLOT(formGoster()));
-    timerformGoster->start(1000);
+    ///QTimer *timerformGoster = new QTimer(this);
+   /// connect(timerformGoster, SIGNAL(timeout()), this, SLOT(formGoster()));
+  /// timerformGoster->start(1000);1616
 
 /******************qr-code***********************************/
     qrnumber=getRand(100000,999999);
@@ -274,6 +280,8 @@ bool MainWindow::eventFilter(QObject *object, QEvent *event)
 
         return false; // lets the event continue to the edit
     }
+
+
     return false;
 }
 int MainWindow::getRand(int min, int max){

@@ -1,10 +1,10 @@
 [Desktop Entry]
 Version=1.0
 Name=E-Kilit Application
-Name[tr]=E-Kilit Uygulamasý
+Name[tr]=E-Kilit
 Type=Application
 Comment=Screen Lock Application
-Comment[tr]=Ekran Kilit Uygulamasý
+Comment[tr]=Ekran Kilit
 Terminal=false
 Exec=/usr/bin/e-kilit
 Icon=/usr/share/e-kilit/e-kilit.svg
