@@ -276,7 +276,7 @@ bool MainWindow::eventFilter(QObject *object, QEvent *event)
 
       // connect(keybordButton, &QPushButton::clicked, [=]() {
       kilitMenus->exec(mapToGlobal(keybordButton->pos()));
-      passwd->setFocus();
+    //  passwd->setFocus();
 
         return false; // lets the event continue to the edit
     }
@@ -445,25 +445,11 @@ void MainWindow::handleHTML(QString sHTML)
 }
 
 void MainWindow::klavyeButtonClick(){
-    QFile data(QDir::homePath()+"/.config/eta/virtualkeyboard/config.ini");
-        data.open(QIODevice::Text | QIODevice::ReadOnly);
-        QString dataText = data.readAll();
 
-        QRegularExpression re("AutoShow=true");
-        QString replacementText("AutoShow=false");
-
-        dataText.replace(re, replacementText);
-
-        QFile newData(QDir::homePath()+"/.config/eta/virtualkeyboard/config.ini");
-        if(newData.open(QFile::WriteOnly | QFile::Truncate)) {
-            QTextStream out(&newData);
-            out << dataText;
-        }
-        newData.close();
   /******************************************************/
   // system("qdbus org.eta.virtualkeyboard /VirtualKeyboard org.eta.virtualkeyboard.toggle");
- system("killall eta-keyboard");
-  system("sleep 1");
+ //system("killall eta-keyboard");
+  //system("sleep 1");
   //system("eta-keyboard show");
 
 // komut.append("sed -i 's/false/true/' ").append(stdout).append("/.config/eta/virtualkeyboard/config.ini");
@@ -474,8 +460,8 @@ void MainWindow::klavyeButtonClick(){
   //system("sleep 1");
 
 
-  system("nohup eta-keyboard show &\n");
-  system("sleep 1");
+  //system("nohup eta-keyboard show &\n");
+  //system("sleep 1");
   //p1.execute("eta-keyboard show");
  //
   // system("qdbus org.eta.virtualkeyboard /VirtualKeyboard org.eta.virtualkeyboard.toggleAutoShow");
@@ -483,23 +469,7 @@ void MainWindow::klavyeButtonClick(){
   // sleep(5);
   // system("qdbus org.eta.virtualkeyboard /VirtualKeyboard org.eta.virtualkeyboard.showFromBottom");
    //system("qdbus org.eta.virtualkeyboard /VirtualKeyboard org.eta.virtualkeyboard.toggle");
-/*****************************************************************************/
-  QFile data1(QDir::homePath()+"/.config/eta/virtualkeyboard/config.ini");
-      data1.open(QIODevice::Text | QIODevice::ReadOnly);
-      QString dataText1 = data1.readAll();
-
-      QRegularExpression re1("AutoShow=false");
-      QString replacementText1("AutoShow=true");
-
-      dataText1.replace(re1, replacementText1);
-
-      QFile newData1(QDir::homePath()+"/.config/eta/virtualkeyboard/config.ini");
-      if(newData1.open(QFile::WriteOnly | QFile::Truncate)) {
-          QTextStream out(&newData1);
-          out << dataText1;
-      }
-      newData1.close();
-  /*******************************************************************/
+/******************************************************************/
 
 
 }
