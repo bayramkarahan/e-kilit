@@ -101,7 +101,7 @@ MainWindow::MainWindow(QWidget *parent) :
                         |Qt::X11BypassWindowManagerHint);
 */
    this->setAttribute(Qt::WA_ShowWithoutActivating, true);
-    this->setWindowFlags(this->windowFlags() | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint | Qt::X11BypassWindowManagerHint | Qt::Tool | Qt::WindowStaysOnTopHint);
+   this->setWindowFlags(this->windowFlags() | Qt::FramelessWindowHint | Qt::NoDropShadowWindowHint | Qt::X11BypassWindowManagerHint | Qt::Tool | Qt::WindowStaysOnTopHint);
     //| Qt::WindowTransparentForInput);
     //| Qt::WindowDoesNotAcceptFocus);
     ///QTimer *timerformGoster = new QTimer(this);
