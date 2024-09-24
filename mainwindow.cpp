@@ -51,7 +51,7 @@ MainWindow::MainWindow(QWidget *parent) :
    #else
    // UNIX code here
       qDebug()<<"linux...";
-    QStringList args1;
+    /*QStringList args1;
     QProcess p1;
     args1 << "-e" << "eta-disable-gestures@pardus.org.tr";
     p1.execute("gnome-shell-extension-tool", args1);
@@ -70,7 +70,7 @@ MainWindow::MainWindow(QWidget *parent) :
     //panel gizleniyor
     system("gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell --method org.gnome.Shell.Eval string:'Main.panel.actor.hide();'");
     system("sleep 0.5");
-
+*/
    #endif
 
 
@@ -326,7 +326,7 @@ MainWindow::~MainWindow()
     //  delete ui;
     //top panel açılıyor
      qDebug()<<"linux..";
-    system("gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell --method org.gnome.Shell.Eval string:'Main.panel.actor.show();'");
+    /*system("gdbus call --session --dest org.gnome.Shell --object-path /org/gnome/Shell --method org.gnome.Shell.Eval string:'Main.panel.actor.show();'");
     system("sleep 0.5");
 
     //power button aktifleştriliyor
@@ -344,7 +344,7 @@ MainWindow::~MainWindow()
     QProcess p4;
     args4 << "set" << "org.gnome.mutter" << "overlay-key" << "'SUPER_L'";
     p4.execute("gsettings", args4);
-
+*/
    #endif
 
 
